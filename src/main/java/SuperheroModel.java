@@ -97,12 +97,5 @@ public class SuperheroModel {
         return alive;
     }
 
-    public boolean tryParse(Object obj) {
-        try {
-            Integer.parseInt((String) obj);
-            return true;
-        } catch (NumberFormatException nfe) {
-           return false;
-        }
-    }
+
 }

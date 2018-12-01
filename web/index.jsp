@@ -1,97 +1,126 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Symrak
-  Date: 11.11.2018
-  Time: 22:26
-  To change this template use File | Settings | File Templates.
---%>
+<!doctype html>
+<html lang="en">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
+
 <head>
-    <title>Superhero Store Application</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        <%@include file="style.css"%>
+    </style>
+
+    <script type="text/javascript">
+        <%@include file="validity.js"%>
+    </script>
+
 </head>
 <body>
+
 <center>
+    <title>Superhero Store Application</title>
     <h1>Superheroes Management</h1>
     <h2>
         <a href="/new">Add New Superhero</a>
-        &nbsp;&nbsp;&nbsp;
         <a href="/list">List All Superheroes</a>
-
     </h2>
 </center>
-<div align="center">
-    <c:if test="${superhero != null}">
-    <form action="update" method="post">
-        </c:if>
-        <c:if test="${superhero == null}">
-        <form action="insert" method="post">
-            </c:if>
-            <table border="1" cellpadding="5">
-                <caption>
-                    <h2>
-                        <c:if test="${superhero != null}">
-                            Edit Superhero
-                        </c:if>
-                        <c:if test="${superhero == null}">
-                            Add New Superhero
-                        </c:if>
-                    </h2>
-                </caption>
-                <c:if test="${superhero != null}">
-                    <input type="hidden" name="id" value="<c:out value='${superhero.id}' />"/>
-                </c:if>
-                <tr>
-                    <th>Name:</th>
-                    <td>
-                        <input type="text" name="name" size="45"
-                               value="<c:out value='${superhero.name}' />"
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <th>Universe:</th>
-                    <td>
-                        <input type="text" name="universe" size="45"
-                               value="<c:out value='${superhero.universe}' />"
-                        />
-                    </td>
-                </tr>
-                <tr>
-                    <th>Power:</th>
-                    <td>
-                        <input type="text" name="power" size="5"
-                               value="<c:out value='${superhero.power}' />"
-                        />
-                    </td>
-                </tr>
 
-                <tr>
-                    <th>Description:</th>
-                    <td>
-                        <input type="text" name="description" size="45"
-                               value="<c:out value='${superhero.description}' />"
-                        />
-                    </td>
-                </tr>
+<div class="container">
+    <form action="insert" method="post">
+        <h1>Registration Superhero</h1>
 
-                <tr>
-                    <th>Alive:</th>
-                    <td>
-                        <input type="text" name="alive" size="5"
-                               value="<c:out value='${superhero.alive}' />"
-                        />
-                    </td>
-                </tr>
+        <label for="name">
+            <span>Name</span>
 
-                <tr>
-                    <td colspan="2" align="center">
-                        <input type="submit" value="Save"/>
-                    </td>
-                </tr>
-            </table>
-        </form>
+            <input type="text" id="name" required name="name" size="45"
+                   value="<c:out value='${superhero.name}'  />"
+            />
+
+            <ul class="input-requirements">
+                <li>At least 3 characters long</li>
+                <li>Must only contain letters and numbers</li>
+            </ul>
+        </label>
+
+        <label for="universe">
+            <span>Universe</span>
+
+            <input type="text"  id="universe" required name="universe" size="45"
+                   value="<c:out value='${superhero.universe}'  />"
+            />
+
+            <ul class="input-requirements">
+                <li>Marvel or Dc universe</li>
+            </ul>
+        </label>
+
+        <label for="power">
+            <span>Power</span>
+
+            <input type="number"  id="power" required name="power" min="0" max="100" size="45"
+                   value="<c:out value='${superhero.power}'  />"
+            />
+
+            <ul class="input-requirements">
+                <li>Power from 0 to 100</li>
+            </ul>
+        </label>
+
+        <label for="description">
+            <span>Description</span>
+
+            <input type="text"  id="description" required name="description" size="45"
+                   value="<c:out value='${superhero.description}'  />"
+            />
+
+            <ul class="input-requirements">
+                <li>Сan't be empty</li>
+            </ul>
+        </label>
+
+        <label for="alive">
+            <span>Alive</span>
+
+            <input type="text"  id="alive" required name="alive" size="45"
+                   value="<c:out value='${superhero.alive}'  />"
+            />
+
+            <ul class="input-requirements">
+                <li>True or false</li>
+            </ul>
+        </label>
+
+        <button id="genAddress" type="button" class="btn btn-default btn-lg active">
+            Export
+        </button>
+
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="Save"/>
+            </td>
+        </tr>
+
+        <br>
+
+    </form>
 </div>
+
+<script type="text/javascript">
+    <%@include file="validity.js"%>
+</script>
+
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

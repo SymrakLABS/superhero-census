@@ -16,6 +16,7 @@
 <body>
 <center>
     <h1>Error</h1>
+    <h2><%=  exception %><br/> </h2>
 </center>
 </body>
 </html>

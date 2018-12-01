@@ -13,6 +13,11 @@
     <title>Superhero Store Application</title>
 </head>
 <body>
+
+<style>
+    <%@include file="style.css"%>
+</style>
+
 <center>
     <h1>Superheroes Management</h1>
     <h2>
